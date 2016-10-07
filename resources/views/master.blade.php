@@ -1,3 +1,7 @@
+<?php
+use Illuminate\Support\Facades\Input;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,30 +9,33 @@
 @include('partials._head')
 
 <body>
-<!-- header -->
-@include('partials._navigation')
-@include('partials._slider')
-<!-- End Header -->
+
+  <!-- header -->
+  @include('partials._navigation')
+  <!-- End Header -->
+
+  <div class="wrapper"> <!--Start Wrapper-->
+
+
 
 <!-- Page Content -->
-<div class="container-fluid">
-    @include('partials._banner')
-            <hr>
     @yield('content')
-            <hr>
-    @include('partials._footer')
-</div>
+<!-- End Page Content -->
 
-    <!-- jQuery -->
-    <script src="assets/js/jquery.js"></script>
+
+
+  </div><!--End of wrapper-->
+
+  <!-- jQuery -->
+    <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- Script to Activate the Carousel -->
-    <script>
+    <!-- <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
-    </script>
+    </script> -->
 
 </body>
 </html>

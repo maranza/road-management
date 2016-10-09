@@ -120,7 +120,7 @@
                 <div class="profile-info">
                   <div class="profile text-centered">
                     <div class="profile-pic margin-auto text-centered">
-                      <img class="profile-pic img-circle img-responsive" src="tools/images/no_profile.png" alt="#image" />
+                      <img class="profile-pic img-circle img-responsive" src="/tools/images/no_profile.png" alt="#image" />
                     </div><br>
                     <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a> -->
                     <li class="dropdown">
@@ -146,10 +146,10 @@
               <a href="home"><i class="fa fa-fw fa-table"></i> Real-Time</a>
             </li>
             <li>
-              <a href="admin"><i class="fa fa-fw fa-edit"></i> Administrate</a>
+              {!! Html::linkRoute('drivers.index', 'Administrate')!!}"
             </li>
             <li>
-              <a href="map"><i class="fa fa-fw fa-map-marker"></i> View Map</a>
+              {!! Html::linkRoute('map', 'Map')!!}
             </li>
             <!-- <li>
                 <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>

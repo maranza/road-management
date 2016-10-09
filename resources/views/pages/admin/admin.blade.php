@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Input;
+use Collective\Html\HtmlServiceProvider;
  ?>
 
 @extends('master')
@@ -77,6 +78,8 @@ use Illuminate\Support\Facades\Input;
                   <td>{{$driver -> alcohol_status}} %</td>
                   <td class="danger">{{$driver -> speed_status}}</td>
                   <td>{{$driver -> speed}} km/h</td>
+                  <td>{!! Html::linkRoute('drivers.edit', 'edit', array($driver->id), array('class' => 'btn btn-primary'))!!}</td>
+                  <td><a href="/drivers/{{$driver->id}}/edit"><button class="btn btn-primary" type="button" name="button">edit</button></a></td>
                 </tr>
                 @endforeach
 
@@ -179,10 +182,10 @@ use Illuminate\Support\Facades\Input;
 
         <div class="tab-pane" id="tab3">
           <h3>Add tables</h3>
-          <!-- {!! Form::open(['route' => 'editor', 'method' => 'get']) !!}
-          {{ Form::submit('edit', ['class' => 'btn btn-primary']) }}
-          {!! Form::close() !!} -->
-          <button href="/editor" class="btn btn-primary" type="button" name="button">edit</button>
+
+
+
+
         </div>
       </div><!-- End third Tab-->
 

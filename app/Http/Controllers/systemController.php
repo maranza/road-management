@@ -18,7 +18,7 @@ use App\Http\Requests;
 
 use App\Driver; //This pulls our models so we can use its class to interact eith database.
 
-class systemControler extends Controller
+class systemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,14 +29,14 @@ class systemControler extends Controller
     public function index()
     {
         //code to view the home page and pull records from database.
-        return View('pages.home', ['drivers' => Driver::All() ]);
+        return View('pages.admin.admin', ['drivers' => Driver::All() ]);
     }
 
    /**
     *  Home page action
     */
     public function admin(){
-      //code to view the admin page and pull records from database(To change and make templete for this).
+      //code to view the admin page and pull records from database(To change and make template for this).
       return View('pages.admin.admin', ['drivers' => Driver::All() ]);
     }
 
@@ -46,10 +46,6 @@ class systemControler extends Controller
     public function map(){
       // code to view the map
       return View('pages.map');
-    }
-
-    public function editor(){
-      return View('pages.admin.edit');
     }
 
     /**
@@ -137,8 +133,17 @@ class systemControler extends Controller
      */
     public function edit($id)
     {
+        // $edited = Driver::create('id', $id)->get();
+        // $driver = new Driver;
         //
+        $target = Driver::find($id);
+        if($target == null){return redirect::to('pages.admin');}
 
+        return View('pages.admin.edit', ['driver' => Driver::find($id) ]);
+    }
+
+    public function editor(){
+      return View('pages.admin.edit',  ['driver' => Driver::find($id) ]);
     }
 
     /**

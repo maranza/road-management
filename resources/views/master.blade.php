@@ -1,11 +1,7 @@
-<?php
-use Illuminate\Support\Facades\Input;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This is the head you will find you title, links, and meta data -->
+<!-- This is the head you will find the title, links, and meta data -->
 @include('partials._head')
 
 <body>

@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 // system routes
 
-Route::get('home', ['as' => 'home', 'uses' => 'systemControler@index']);
-Route::get('admin', ['as'=>'admin', 'uses' => 'systemControler@admin']);
-Route::get('map', ['as' => 'map', 'uses' => 'systemControler@map']);
-Route::resource('drivers', 'systemControler');
-Route::get('editor', ['as' => 'editor', 'uses' => 'systemControler@editor']);
+Route::get('home', ['as' => 'home', 'uses' => 'systemController@index']);
+Route::get('admin', ['as'=>'admin', 'uses' => 'systemController@admin']);
+Route::get('map', ['as' => 'map', 'uses' => 'systemController@map']);
+Route::resource('drivers', 'systemController');
+// Route::get('/admin/{{$id}}/edit', ['as' => 'edit', 'uses' => 'systemController@edit']);

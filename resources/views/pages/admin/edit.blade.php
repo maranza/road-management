@@ -1,8 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Input;
- ?>
-
-
+use Collective\Html\HtmlServiceProvider;
+?>
 @extends('master')
 
 @section('content')
@@ -33,47 +32,47 @@ use Illuminate\Support\Facades\Input;
       <div class="row">
         <div class="col-md-6">
           <!-- laravel form -->
-          {!! Form::open(['route' => 'drivers.store', 'method' => 'post']) !!}
+          {!! Form::model($driver, ['route' => ['drivers.update', $driver->id]]) !!}
 
             {{ Form::label('name', 'name:') }}
-            {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
+            {{ Form::text('name', null, array('class' => 'form-control')) }}
 
             {{ Form::label('surname', 'surname:') }}
-            {{ Form::text('surname', Input::old('name'), array('class' => 'form-control')) }}
+            {{ Form::text('surname', null, array('class' => 'form-control')) }}
 
             {{ Form::label('gender', 'gender:') }}
-            {{ Form::text('gender', Input::old('name'), array('class' => 'form-control')) }}
+            {{ Form::text('gender', null, array('class' => 'form-control')) }}
 
             {{ Form::label('age', 'age:') }}
-            {{ Form::text('age', Input::old('name'), array('class' => 'form-control')) }}
+            {{ Form::text('age', null, array('class' => 'form-control')) }}
 
             {{ Form::label('cell', 'cell:') }}
-            {{ Form::text('cell', Input::old('name'), array('class' => 'form-control')) }}
+            {{ Form::text('cell', null, array('class' => 'form-control')) }}
 
             {{ Form::label('email', 'email:') }}
-            {{ Form::email('email', Input::old('name'), array('class' => 'form-control')) }}
+            {{ Form::email('email', null, array('class' => 'form-control')) }}
 
             {{ Form::label('address', 'address:') }}
-            {{ Form::text('address', Input::old('name'), array('class' => 'form-control')) }}
+            {{ Form::text('address', null, array('class' => 'form-control')) }}
 
 
-            {{ Form::submit('add driver', array('class' => 'btn btn-primary', 'style' => 'margin: 10px;'))}}
+            {{ Form::submit('update', array('class' => 'btn btn-success', 'style' => 'margin: 10px;'))}}
             {{ Form::reset('clear', array('class' => 'btn btn-primary'))}}
           {!! Form::close() !!}
         </div>
         <div class="col-md-6">
-          {!! Form::open(['route' => 'drivers.store', 'method' => 'post']) !!}
+          {!! Form::model($driver, ['route' => ['drivers.update', $driver->id]]) !!}
               {{ Form::label('car', 'car-name:') }}
-              {{ Form::text('car', Input::old('name'), array('class' => 'form-control')) }}
+              {{ Form::text('car', null, array('class' => 'form-control')) }}
 
               {{ Form::label('model', 'car-model:') }}
-              {{ Form::text('model', Input::old('name'), array('class' => 'form-control')) }}
+              {{ Form::text('model', null, array('class' => 'form-control')) }}
 
               {{ Form::label('color', 'car-color:') }}
-              {{ Form::text('color', Input::old('name'), array('class' => 'form-control')) }}
+              {{ Form::text('color', null, array('class' => 'form-control')) }}
 
               {{ Form::label('license', 'car-license:') }}
-              {{ Form::text('license', Input::old('name'), array('class' => 'form-control')) }}
+              {{ Form::text('license', null, array('class' => 'form-control')) }}
 
               {{ Form::submit('add driver', array('class' => 'btn btn-primary', 'style' => 'margin: 10px;'))}}
               {{ Form::reset('clear', array('class' => 'btn btn-primary'))}}

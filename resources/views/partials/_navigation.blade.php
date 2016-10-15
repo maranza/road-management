@@ -143,13 +143,13 @@
                 <a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li class=""> <!--active class-->
-              <a href="home"><i class="fa fa-fw fa-table"></i> Real-Time</a>
+              <a href="{{ url('/home') }}"><i class="fa fa-fw fa-table"></i> Real-Time</a>
             </li>
             <li>
-              {!! Html::linkRoute('drivers.index', 'Administrate')!!}"
+              <a href="{{ url('/admin') }}"><i class="fa fa-fw fa"></i>Administrate</a>
             </li>
             <li>
-              {!! Html::linkRoute('map', 'Map')!!}
+              <a href="{{ url('/map') }}"><i class="fa fa-fw fa-map"></i>View Map</a>
             </li>
             <!-- <li>
                 <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>

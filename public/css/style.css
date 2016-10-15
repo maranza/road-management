@@ -59,6 +59,12 @@ body{
 	margin: 10px auto	;
 	border-radius: 50%;
 }
+.id-image{
+	height: 200px;
+	width: 200px;
+	background-color: black;
+	border: 2px solid red;
+}
 .text-centered{
 	text-align: center;
 }

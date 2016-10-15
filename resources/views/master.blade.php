@@ -13,7 +13,7 @@
   <div class="wrapper"> <!--Start Wrapper-->
 
 
-
+    @include('partials._messages')
 <!-- Page Content -->
     @yield('content')
 <!-- End Page Content -->

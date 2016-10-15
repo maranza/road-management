@@ -39,9 +39,19 @@ use Collective\Html\HtmlServiceProvider;
       <div class="tab-content">
         <div class="tab-pane active" id="tab1">
           <u><h3 class="text-center">Add forms to add cars</h3></u><br>
+          @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">
+              <strong>Success:</strong> {{ Session::get('success') }}
+            </div>
+          @endif
+          @if(Session::has('added'))
+            <div class="alert alert-success" role="alert">
+              <strong>Success:</strong> {{ Session::get('added') }}
+            </div>
+          @endif
           <!-- <h4>Use modals to Add, update Info</h4> -->
           <div class="table-responsive">
-            <table class="table table-condensed table-bordered table-hover table-striped ">
+            <table class="table table-condensed table-bordered table-hover table-striped">
               <thead>
                 <tr>
                   <th>Id</th>
@@ -49,7 +59,7 @@ use Collective\Html\HtmlServiceProvider;
                   <th>Gender</th>
                   <th>Age</th>
                   <th>Cell-no</th>
-                  <th>E-mail</th>
+                  <!-- <th>E-mail</th> -->
                   <th>Address</th>
                   <th>Car-Name</th>
                   <th>Car-Model</th>
@@ -69,7 +79,7 @@ use Collective\Html\HtmlServiceProvider;
                   <td>{{$driver -> gender}}</td>
                   <td>{{$driver -> age}}</td>
                   <td>{{$driver -> cell}}</td>
-                  <td>{{$driver -> email}}</td>
+                  <!-- <td>{{$driver -> email}}</td> -->
                   <td>{{$driver -> address}}</td>
                   <td>{{$driver -> car}}</td>
                   <td>{{$driver -> model}}</td>
@@ -78,8 +88,12 @@ use Collective\Html\HtmlServiceProvider;
                   <td>{{$driver -> alcohol_status}} %</td>
                   <td class="danger">{{$driver -> speed_status}}</td>
                   <td>{{$driver -> speed}} km/h</td>
-                  <td>{!! Html::linkRoute('drivers.edit', 'edit', array($driver->id), array('class' => 'btn btn-primary'))!!}</td>
-                  <td><a href="/drivers/{{$driver->id}}/edit"><button class="btn btn-primary" type="button" name="button">edit</button></a></td>
+                  <td>{!! Html::linkRoute('drivers.edit', 'edit', array($driver->id), array('class' => 'btn btn-warning')) !!}</td>
+                  <td>
+                    {!! Form::open(['route' => ['drivers.destroy', $driver->id], 'method' => 'DELETE']) !!}
+                      {!! Form::submit('Del', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+                  </td>
                 </tr>
                 @endforeach
 

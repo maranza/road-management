@@ -18,7 +18,7 @@ use Collective\Html\HtmlServiceProvider;
           <i class="fa fa-dashboard"></i>  <a href="#">Dashboard</a>
         </li>
         <li class="active">  <!--It was active before-->
-          <i class="fa fa-table"></i> Tables
+          <i class="fa fa-table"></i> Update <!--Make This a Navigation variable-->
         </li>
       </ol>
     </div>
@@ -30,56 +30,58 @@ use Collective\Html\HtmlServiceProvider;
   <div class="row">
     <div class="col-md-10 col-md-offset-2" style="min-height:92vh;">
       <div class="row">
-        <div class="col-md-6">
-          <!-- laravel form -->
-          {!! Form::model($driver, ['route' => ['drivers.update', $driver->id]]) !!}
 
+          <!-- laravel form -->
+          {!! Form::model($driver, ['route' => ['drivers.update', $driver->id], 'method' => 'PUT']) !!}
+          <div class="col-md-6">
             {{ Form::label('name', 'name:') }}
-            {{ Form::text('name', null, array('class' => 'form-control')) }}
+            {{ Form::text('name', null, array('class' => 'form-control', 'style' => 'color:red')) }}
 
             {{ Form::label('surname', 'surname:') }}
-            {{ Form::text('surname', null, array('class' => 'form-control')) }}
+            {{ Form::text('surname', null, array('class' => 'form-control', 'style' => 'color:red')) }}
 
             {{ Form::label('gender', 'gender:') }}
-            {{ Form::text('gender', null, array('class' => 'form-control')) }}
+            {{ Form::text('gender', null, array('class' => 'form-control', 'style' => 'color:red')) }}
 
             {{ Form::label('age', 'age:') }}
-            {{ Form::text('age', null, array('class' => 'form-control')) }}
+            {{ Form::text('age', null, array('class' => 'form-control', 'style' => 'color:red')) }}
 
             {{ Form::label('cell', 'cell:') }}
-            {{ Form::text('cell', null, array('class' => 'form-control')) }}
+            {{ Form::text('cell', null, array('class' => 'form-control', 'style' => 'color:red')) }}
 
             {{ Form::label('email', 'email:') }}
-            {{ Form::email('email', null, array('class' => 'form-control')) }}
+            {{ Form::email('email', null, array('class' => 'form-control', 'style' => 'color:red')) }}
 
             {{ Form::label('address', 'address:') }}
-            {{ Form::text('address', null, array('class' => 'form-control')) }}
+            {{ Form::text('address', null, array('class' => 'form-control', 'style' => 'color:red')) }}
+          </div>
 
+          <div class="col-md-6">
+                {{ Form::label('car', 'car-name:') }}
+                {{ Form::text('car', null, array('class' => 'form-control', 'style' => 'color:red')) }}
 
-            {{ Form::submit('update', array('class' => 'btn btn-success', 'style' => 'margin: 10px;'))}}
-            {{ Form::reset('clear', array('class' => 'btn btn-primary'))}}
-          {!! Form::close() !!}
-        </div>
-        <div class="col-md-6">
-          {!! Form::model($driver, ['route' => ['drivers.update', $driver->id]]) !!}
-              {{ Form::label('car', 'car-name:') }}
-              {{ Form::text('car', null, array('class' => 'form-control')) }}
+                {{ Form::label('model', 'car-model:') }}
+                {{ Form::text('model', null, array('class' => 'form-control', 'style' => 'color:red')) }}
 
-              {{ Form::label('model', 'car-model:') }}
-              {{ Form::text('model', null, array('class' => 'form-control')) }}
+                {{ Form::label('color', 'car-color:') }}
+                {{ Form::text('color', null, array('class' => 'form-control', 'style' => 'color:red')) }}
 
-              {{ Form::label('color', 'car-color:') }}
-              {{ Form::text('color', null, array('class' => 'form-control')) }}
+                {{ Form::label('license', 'car-license:') }}
+                {{ Form::text('license', null, array('class' => 'form-control', 'style' => 'color:red')) }}
+          </div>
+      </div>
 
-              {{ Form::label('license', 'car-license:') }}
-              {{ Form::text('license', null, array('class' => 'form-control')) }}
+      <div class="row">
+        <div class="col-md-6 col-md-offset-2"><br><br>
 
-              {{ Form::submit('add driver', array('class' => 'btn btn-primary', 'style' => 'margin: 10px;'))}}
-              {{ Form::reset('clear', array('class' => 'btn btn-primary'))}}
+          {{ Form::submit('update', array('class' => 'btn btn-success btn-block', 'style' => 'margin: 10px;'))}}
+          {{ Form::reset('clear', array('class' => 'btn btn-danger btn-block', 'style' => 'margin: 10px;'))}}
 
-          {!! Form::close() !!}
         </div>
       </div>
+          {!! Form::close() !!}
+
+
     </div>
   </div>
 

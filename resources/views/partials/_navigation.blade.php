@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="home"><i class="fa fa-cab"></i> RT-ADSD-sytem</a>
+        <a class="navbar-brand" href="home"><i class="fa fa-car"></i> RT-ADSD-sytem</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
@@ -146,10 +146,10 @@
               <a href="{{ url('/home') }}"><i class="fa fa-fw fa-table"></i> Real-Time</a>
             </li>
             <li>
-              <a href="{{ url('/admin') }}"><i class="fa fa-fw fa"></i>Administrate</a>
+              <a href="{{ url('/admin') }}"><i class="fa fa-fw fa-user"></i> Administrate</a>
             </li>
             <li>
-              <a href="{{ url('/map') }}"><i class="fa fa-fw fa-map"></i>View Map</a>
+              <a href="{{ url('/map') }}"><i class="fa fa-fw fa-map-marker"></i> View Map</a>
             </li>
             <!-- <li>
                 <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>

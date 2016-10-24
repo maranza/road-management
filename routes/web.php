@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+// Route::get('/sensor', ['as' => 'sensor', 'uses' => 'systemController@sensor']);
 
 Route::group(['middleware' => ['web']], function(){
 
@@ -25,6 +25,9 @@ Route::group(['middleware' => ['web']], function(){
   Route::get('map', ['as' => '/map', 'uses' => 'systemController@map']);
   Route::resource('drivers', 'systemController');
   Route::get('profile', ['as' => 'profile', 'uses' => 'systemController@profile']);
+  Route::get('/sensor', ['as' => 'sensor', 'uses' => 'systemController@sensor']);
+  Route::put('/detect', ['as' => 'detect', 'uses' => 'systemController@detect']);
+
   // Route::get('/admin/{{$id}}/edit', ['as' => 'edit', 'uses' => 'systemController@edit']);
 
 });

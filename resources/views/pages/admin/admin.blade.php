@@ -30,7 +30,7 @@ use Collective\Html\HtmlServiceProvider;
 <!-- I removed header here -->
       <!-- Tabs Navigation -->
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab1" data-toggle="tab">Cars</a></li>
+        <li class="active"><a href="#tab1" data-toggle="tab">Drivers</a></li>
         <li><a href="#tab2" data-toggle="tab">Users</a></li>
         <li><a href="#tab3" data-toggle="tab">View Tables</a></li>
       </ul>
@@ -38,7 +38,7 @@ use Collective\Html\HtmlServiceProvider;
       <!-- tab sectons -->
       <div class="tab-content">
         <div class="tab-pane active" id="tab1">
-          <u><h3 class="text-center">Add forms to add cars</h3></u><br>
+          <u><h3 class="text-center">Drivers information</h3></u><br>
           @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
               <strong>Success:</strong> {{ Session::get('success') }}
@@ -58,7 +58,7 @@ use Collective\Html\HtmlServiceProvider;
                   <th>Owner</th>
                   <th>Gender</th>
                   <th>Age</th>
-                  <th>Cell-no</th>
+                  <!-- <th>Cell-no</th> -->
                   <!-- <th>E-mail</th> -->
                   <th>Address</th>
                   <th>Car-Name</th>
@@ -78,7 +78,7 @@ use Collective\Html\HtmlServiceProvider;
                   <td>{{$driver -> surname}}</td>
                   <td>{{$driver -> gender}}</td>
                   <td>{{$driver -> age}}</td>
-                  <td>{{$driver -> cell}}</td>
+                  <!-- <td>{{$driver -> cell}}</td> -->
                   <!-- <td>{{$driver -> email}}</td> -->
                   <td>{{$driver -> address}}</td>
                   <td>{{$driver -> car}}</td>
@@ -89,6 +89,7 @@ use Collective\Html\HtmlServiceProvider;
                   <td class="danger">{{$driver -> speed_status}}</td>
                   <td>{{$driver -> speed}} km/h</td>
                   <td>{!! Html::linkRoute('drivers.edit', 'edit', array($driver->id), array('class' => 'btn btn-warning')) !!}</td>
+                  <td>{!! Html::linkRoute('drivers.show', 'view', array($driver->id), array('class' => 'btn btn-primary')) !!}</td>
                   <td>
                     {!! Form::open(['route' => ['drivers.destroy', $driver->id], 'method' => 'DELETE']) !!}
                       {!! Form::submit('Del', ['class' => 'btn btn-danger']) !!}

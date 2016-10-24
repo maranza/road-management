@@ -64,6 +64,11 @@ body{
 	width: 200px;
 	background-color: black;
 	border: 2px solid red;
+	margin-bottom: 30px;
+}
+.profile-info{
+	list-style: none;
+	font-size: 25px;
 }
 .text-centered{
 	text-align: center;

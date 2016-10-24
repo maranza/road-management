@@ -147,8 +147,14 @@ class systemController extends Controller
      */
     public function show($id)
     {
-        //Show profile page
-        return View('pages.profile');
+      //get the driver object
+      $driver = Driver::find($id);
+
+      //check if driver exist if not direct to admin page
+      if($driver == null){return redirect()->route('/admin');}
+
+      //Show profile page
+      return View('pages.profile')->withDriver($driver);
     }
 
 
@@ -242,6 +248,29 @@ class systemController extends Controller
 
       //redirect
       return redirect()->route('/admin');
+    }
+
+
+
+    public function sensor(){
+      return View('sensor', ['drivers' => Driver::All() ]);
+    }
+
+    public function detect(Request $request, $id){
+      //get the friver id
+      $driver = Driver::find($id);
+
+      $driver->alcohol_status = $request->input('alcohol_status');
+      $driver->speed_status = $request->input('speed_status');
+      $driver->save();
+
+      //set flash message with success message
+      Session::flash('success', 'information updated');
+
+      //redirect with a flash message to drivers(admin)
+      return redirect()->route('/admin');
+
+
     }
 
     /**

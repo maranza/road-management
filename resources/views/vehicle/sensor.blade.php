@@ -40,7 +40,7 @@ use Collective\Html\HtmlServiceProvider;
             </div>
           </form> -->
 
-          {!! Form::model($driver, ['route' => ['detect', $driver->id], 'method' => 'post']) !!}
+          {!! Form::model($driver, ['route' => ['drivers.update', $driver->id], 'method' => 'put']) !!}
 
             {{ Form::label('alcohol_status', 'alcohol_status:') }}
             {{ Form::text('alcohol_status', Input::old('alcohol_status'), array('class' => 'form-control')) }}

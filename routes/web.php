@@ -25,9 +25,14 @@ Route::group(['middleware' => ['web']], function(){
   Route::get('map', ['as' => '/map', 'uses' => 'systemController@map']);
   Route::resource('drivers', 'systemController');
   Route::get('profile', ['as' => 'profile', 'uses' => 'systemController@profile']);
-  Route::get('/sensor', ['as' => 'sensor', 'uses' => 'systemController@sensor']);
-  Route::put('/detect', ['as' => 'detect', 'uses' => 'systemController@detect']);
 
-  // Route::get('/admin/{{$id}}/edit', ['as' => 'edit', 'uses' => 'systemController@edit']);
+});
+
+Route::group(['middleware' => ['web']], function(){
+  //sensor routes
+  Route::resource('vehicle', 'vehicle');
+  Route::get('vehicles', ['as' => 'vehicles', 'uses' => 'vehicle@index']);
+  // Route::get('/sensor', ['as' => 'sensor', 'uses' => 'systemController@sensor']);
+  // Route::put('/detect', ['as' => 'detect', 'uses' => 'systemController@detect']);
 
 });

@@ -114,17 +114,25 @@ class vehicle extends Controller
       $driver->speed_status = $request->input('speed_status');
 
       $alcohol_level = 5;
+      $speed_level = 60;
       $sensor = Input::get('alcohol_status');
+      $speedometer = Input::get('speed_status');
 
-        if($alcohol_level <= preg_replace( "/\r|\n/", "", $sensor)){
+        if($alcohol_level >= preg_replace( "/\r|\n/", "", $sensor) && $speed_level >= preg_replace( "/\r|\n/", "", $speedometer) ){
 
           //pull vehicles.
           $driver = Driver::all();
 
           //return the view with them.
-          return view('vehicle.vehicles', ['drivers' => $driver]);
+          // return view('vehicle.vehicles', ['drivers' => $driver]);
+          return redirect()->route('vehicles');
+
 
         }else {
+          $driver->alcohol_status = $request->alcohol_status;
+          $driver->speed_status = $request->speed_status;
+          $driver->speed = $request->speed_status;
+
           //record the results to database.
           $driver->save();
         }

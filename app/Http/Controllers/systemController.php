@@ -43,9 +43,10 @@ class systemController extends Controller
       $user = DB::table('officers')->where('username', '=', $username)->value('username');
 
       if($user){
-
-        if (condition) {
+        $role = DB::table('officers')->where('username', '=', $username)->value('role');
+        if ($role == 'admin') {
           # code...Admin
+          return redirect()->route('/admin');
         } else {
           # code...Officer
           return redirect()->route('/home');

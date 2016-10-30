@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
+Route::get('init', ['as' => 'init', 'uses' => 'systemController@init']);
 
 Route::get('login', ['as' => 'login', 'uses' => 'systemController@login']);
 

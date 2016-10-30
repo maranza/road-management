@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Redirect;
 //for update method/action
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -23,6 +25,9 @@ use App\Officer;
 class systemController extends Controller
 {
 
+    public function init(){
+      return view('index');
+    }
 
     public function login(Request $request){
 
@@ -33,14 +38,24 @@ class systemController extends Controller
       // $officer->password = $request->find('password');
 
       $username = Input::get('username');
-      $officer = Officer::where($username);
+      // $officer = Officer::where($username);
 
-      if($officer != preg_replace( "/\r|\n/", "", $username)){
-        // return redirect()->route('/home');
-        return "hello ";
+      $user = DB::table('officers')->where('username', '=', $username)->value('username');
+
+      if($user){
+
+        if (condition) {
+          # code...Admin
+        } else {
+          # code...Officer
+          return redirect()->route('/home');
+        }
+
+
+        // return $user;
       }else{
-        // return redirect()->route('index');
-        return view('index');
+        return redirect()->route('init');
+        // return view('index');
       }
 
     }

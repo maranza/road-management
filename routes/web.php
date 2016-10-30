@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('login', ['as' => 'login', 'uses' => 'systemController@login']);
 
 // Route::get('/sensor', ['as' => 'sensor', 'uses' => 'systemController@sensor']);
 

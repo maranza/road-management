@@ -1,3 +1,8 @@
+<?php
+use Illuminate\Support\Facades\Input;
+use Collective\Html\HtmlServiceProvider;
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +35,7 @@
 									<h3 class="panel-title">Login</h3>
 								</div>
 								<div class="panel-body">
-									<form class="" action="home" method="">
+									<!-- <form class="" action="home" method="">
 										<div class="form-group">
 											<label for="email">Email: </label>
 											<input class="form-control" type="text" name="email" placeholder="email">
@@ -42,7 +47,26 @@
 										<div class="form-group">
 											<button class="btn btn-success" type="submit" name="button">Login</button>
 										</div>
-									</form>
+									</form> -->
+
+								{!! Form::open(['route' => 'login', 'method' => 'get']) !!}
+
+								<div class="form-group">
+									{{ Form::label('username', 'username:') }}
+									{{ Form::text('username', null, array('class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => 'batch No.')) }}
+								</div>
+
+								<div class="form-group">
+									{{ Form::label('password', 'password:') }}
+									{{ Form::password('password', null, array('class' => 'form-control', 'autocomplete' => 'off')) }}
+								</div>
+
+								<div class="form-group">
+									{{ Form::submit('login', array('class' => 'btn btn-success')) }}
+								</div>
+
+								{!! Form::close() !!}
+
 								</div>
 							</div>
 

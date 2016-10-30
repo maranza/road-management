@@ -18,9 +18,33 @@ use App\Http\Requests;
 // use App\Http\Response;
 
 use App\Driver; //This pulls our models so we can use its class to interact eith database.
+use App\Officer;
 
 class systemController extends Controller
 {
+
+
+    public function login(Request $request){
+
+      // $officers = Officer::all();
+
+      //save new changes to database
+      // $officer->username = $request->find('username');
+      // $officer->password = $request->find('password');
+
+      $username = Input::get('username');
+      $officer = Officer::where($username);
+
+      if($officer != preg_replace( "/\r|\n/", "", $username)){
+        // return redirect()->route('/home');
+        return "hello ";
+      }else{
+        // return redirect()->route('index');
+        return view('index');
+      }
+
+    }
+
 
     /**
      * Display a listing of the resource.

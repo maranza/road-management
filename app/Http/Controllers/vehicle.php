@@ -114,7 +114,7 @@ class vehicle extends Controller
       $driver->speed_status = $request->input('speed_status');
 
       $alcohol_level = 5;
-         $sensor = Input::get('alcohol_status');
+      $sensor = Input::get('alcohol_status');
 
         if($alcohol_level <= preg_replace( "/\r|\n/", "", $sensor)){
 

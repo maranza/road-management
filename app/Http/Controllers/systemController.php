@@ -47,16 +47,29 @@ class systemController extends Controller
         // echo $pass;
           //get the user role if admin redirect to admin side if officer to officers site.
           $role = DB::table('officers')->where('username', '=', $username)->value('role');
+          $name = DB::table('officers')->where('username', '=', $username)->value('name');
 
           if ($role == 'admin') {
             # redirect...Admin
             session()->put('state', 'logged-in');
-            $user = DB::table('officers')->where('username', '=', $username)->get();
-            return redirect()->route('/admin');
-          } else {
+
+            return view('pages.admin.admin', ['role' => $role,
+                                              'drivers' => Driver::All(),
+                                              'officers' =>Officer::All(),
+                                              'name'=>$name
+                                            ]);
+            // return redirect()->route('/admin', ['role' => $role]);
+          } elseif ($role == 'officer'){
             # redirect...Officers
             session()->put('state', 'logged-in');
-            return redirect()->route('/home');
+            return view('pages.home', ['role' => $role,
+                                       'drivers' => Driver::All(),
+                                       'name'=>$name
+                                      ]);
+          }
+          else{
+            session()->forget('state', 'logged-out');
+            return redirect()->route('init');
           }
 
         //

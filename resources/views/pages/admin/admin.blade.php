@@ -155,43 +155,35 @@ use Collective\Html\HtmlServiceProvider;
               <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Owner</th>
-                  <th>Gender</th>
-                  <th>Age</th>
+                  <th>name</th>
+                  <th>surname</th>
+                  <th>email</th>
                   <!-- <th>Cell-no</th> -->
                   <!-- <th>E-mail</th> -->
-                  <th>Address</th>
-                  <th>Car-Name</th>
-                  <th>Car-Model</th>
-                  <th>Car-Color</th>
-                  <th>Car-License</th>
-                  <th>Alcohol-Level</th>
-                  <th>Speed-Level</th>
-                  <th>Speed</th>
+                  <th>username</th>
+                  <th>password</th>
+                  <th>role</th>
+
                 </tr>
               </thead>
               <tbody>
 
-                @foreach($drivers as $driver)
+                @foreach($officers as $officer)
                 <tr class="success">
-                  <td>{{$driver -> id}}</td>
-                  <td>{{$driver -> surname}}</td>
-                  <td>{{$driver -> gender}}</td>
-                  <td>{{$driver -> age}}</td>
-                  <!-- <td>{{$driver -> cell}}</td> -->
-                  <!-- <td>{{$driver -> email}}</td> -->
-                  <td>{{$driver -> address}}</td>
-                  <td>{{$driver -> car}}</td>
-                  <td>{{$driver -> model}}</td>
-                  <td>{{$driver -> color}}</td>
-                  <td>{{$driver -> license}}</td>
-                  <td>{{$driver -> alcohol_status}} %</td>
-                  <td class="danger">{{$driver -> speed_status}}</td>
-                  <td>{{$driver -> speed}} km/h</td>
-                  <td>{!! Html::linkRoute('drivers.edit', 'edit', array($driver->id), array('class' => 'btn btn-warning')) !!}</td>
-                  <td>{!! Html::linkRoute('drivers.show', 'view', array($driver->id), array('class' => 'btn btn-primary')) !!}</td>
+                  <td>{{$officer -> id}}</td>
+                  <td>{{$officer -> name}}</td>
+                  <td>{{$officer -> surname}}</td>
+                  <td>{{$officer -> email}}</td>
+                  <!-- <td>{{$officer -> cell}}</td> -->
+                  <!-- <td>{{$officer -> email}}</td> -->
+                  <td>{{$officer -> username}}</td>
+                  <td>{{$officer -> password}}</td>
+                  <td>{{$officer -> role}}</td>
+      
+                  <td>{!! Html::linkRoute('drivers.edit', 'edit', array($officer->id), array('class' => 'btn btn-warning')) !!}</td>
+                  <td>{!! Html::linkRoute('drivers.show', 'view', array($officer->id), array('class' => 'btn btn-primary')) !!}</td>
                   <td>
-                    {!! Form::open(['route' => ['drivers.destroy', $driver->id], 'method' => 'DELETE']) !!}
+                    {!! Form::open(['route' => ['drivers.destroy', $officer->id], 'method' => 'DELETE']) !!}
                       {!! Form::submit('Del', ['class' => 'btn btn-danger']) !!}
                     {!! Form::close() !!}
                   </td>

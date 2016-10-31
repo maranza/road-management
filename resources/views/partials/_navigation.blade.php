@@ -1,4 +1,9 @@
-
+<?php
+  namespace App\Http\Controllers;
+  use Illuminate\Support\Facades\Input;
+  use Collective\Html\HtmlServiceProvider;
+  use Illuminate\Support\Facades\DB;
+ ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -94,7 +99,7 @@
             </ul>
         </li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Oratile <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{$name}} <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -124,7 +129,7 @@
                     </div><br>
                     <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a> -->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{$name}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
@@ -145,9 +150,15 @@
             <li class=""> <!--active class-->
               <a href="{{ url('/home') }}"><i class="fa fa-fw fa-table"></i> Real-Time</a>
             </li>
+
+            @if($role == 'admin')
             <li>
               <a href="{{ url('/admin') }}"><i class="fa fa-fw fa-user"></i> Administrate</a>
             </li>
+            @elseif($role == 'officer')
+
+            @else
+            @endif
             <li>
               <a href="{{ url('/map') }}"><i class="fa fa-fw fa-map-marker"></i> View Map</a>
             </li>

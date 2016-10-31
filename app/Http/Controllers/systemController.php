@@ -52,7 +52,6 @@ class systemController extends Controller
           if ($role == 'admin') {
             # redirect...Admin
             session()->put('state', 'logged-in');
-
             return view('pages.admin.admin', ['role' => $role,
                                               'drivers' => Driver::All(),
                                               'officers' =>Officer::All(),

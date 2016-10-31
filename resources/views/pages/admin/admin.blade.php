@@ -179,7 +179,7 @@ use Collective\Html\HtmlServiceProvider;
                   <td>{{$officer -> username}}</td>
                   <td>{{$officer -> password}}</td>
                   <td>{{$officer -> role}}</td>
-      
+
                   <td>{!! Html::linkRoute('drivers.edit', 'edit', array($officer->id), array('class' => 'btn btn-warning')) !!}</td>
                   <td>{!! Html::linkRoute('drivers.show', 'view', array($officer->id), array('class' => 'btn btn-primary')) !!}</td>
                   <td>

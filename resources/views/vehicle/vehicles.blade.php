@@ -13,7 +13,7 @@ use Collective\Html\HtmlServiceProvider;
   </head>
   <body>
 
-    <h1 class="text-centered">Vehicle Model:</h1><hr>
+    <h1 class="text-centered">Vehicle model:</h1><hr>
 
     <div class="container">
       <div class="row">
@@ -45,11 +45,11 @@ use Collective\Html\HtmlServiceProvider;
                   <td>{{$driver -> alcohol_status}} %</td>
                   <td class="danger">{{$driver -> speed_status}}</td>
                   <td>{{$driver -> speed}} km/h</td>
-                  <td>{!! Html::linkRoute('vehicle.edit', 'edit', array($driver->id), array('class' => 'btn btn-warning')) !!}</td>
+                  <!-- <td>{!! Html::linkRoute('vehicle.edit', 'edit', array($driver->id), array('class' => 'btn btn-warning')) !!}</td> -->
                   <td>{!! Html::linkRoute('vehicle.show', 'detect', array($driver->id), array('class' => 'btn btn-primary')) !!}</td>
                   <td>
-                    {!! Form::open(['route' => ['vehicle.destroy', $driver->id], 'method' => 'DELETE']) !!}
-                      {!! Form::submit('Del', ['class' => 'btn btn-danger']) !!}
+                    <!-- {!! Form::open(['route' => ['vehicle.destroy', $driver->id], 'method' => 'DELETE']) !!} -->
+                      <!-- {!! Form::submit('Del', ['class' => 'btn btn-danger']) !!} -->
                     {!! Form::close() !!}
                   </td>
                 </tr>

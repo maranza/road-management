@@ -13,7 +13,7 @@ use Collective\Html\HtmlServiceProvider;
   </head>
   <body>
 
-    <h1 class="text-centered">Vehicle Model:</h1><hr>
+    <h1 class="text-centered">Vehicle model:</h1><hr>
 
     <div class="container">
       @if(Session::has('success'))

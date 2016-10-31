@@ -36,7 +36,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="id-image">
-                      <img src="" alt="#image" />
+                      <img src="/tools/images/profile.jpg" class="img-responsive" alt="#image" />
                     </div>
                   </div>
                 </div>
@@ -85,7 +85,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="id-image">
-                      <img src="" alt="#image" />
+                      <img src="/tools/images/car2.jpg" class="img-responsive" alt="#image" />
                     </div>
                   </div>
                 </div>

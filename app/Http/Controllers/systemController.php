@@ -24,44 +24,56 @@ use App\Officer;
 
 class systemController extends Controller
 {
-
+#===============================================================================
     public function init(){
       return view('index');
     }
-
+#===============================================================================
     public function login(Request $request){
 
-      // $officers = Officer::all();
-
-      //save new changes to database
-      // $officer->username = $request->find('username');
-      // $officer->password = $request->find('password');
 
       $username = Input::get('username');
-      // $officer = Officer::where($username);
+      $password = Input::get('password');
 
-      $user = DB::table('officers')->where('username', '=', $username)->value('username');
-
-      if($user){
-        $role = DB::table('officers')->where('username', '=', $username)->value('role');
-        if ($role == 'admin') {
-          # code...Admin
-          return redirect()->route('/admin');
-        } else {
-          # code...Officer
-          return redirect()->route('/home');
-        }
-
-
-        // return $user;
-      }else{
+      if ($username == "") {
         return redirect()->route('init');
-        // return view('index');
       }
 
-    }
+      $user = DB::table('officers')->where('username', '=', $username)->value('username');
+      $pass = DB::table('officers')->where('password', '=', $password)->value('password');
 
+      if(($user == $username) && ($pass == $password)){
 
+        // echo $pass;
+          //get the user role if admin redirect to admin side if officer to officers site.
+          $role = DB::table('officers')->where('username', '=', $username)->value('role');
+
+          if ($role == 'admin') {
+            # redirect...Admin
+            session()->put('state', 'logged-in');
+            $user = DB::table('officers')->where('username', '=', $username)->get();
+            return redirect()->route('/admin');
+          } else {
+            # redirect...Officers
+            session()->put('state', 'logged-in');
+            return redirect()->route('/home');
+          }
+
+        //
+        // // return $user;
+      }
+      elseif (($username == "") || ($password == "")) {
+        session()->forget('state', 'logged-out');
+        return redirect()->route('init');
+      }
+      else{
+        session()->forget('state', 'logged-out');
+        return redirect()->route('init');
+      }
+
+  }
+
+#===============================================================================
     /**
      * Display a listing of the resource.
      *
@@ -74,7 +86,7 @@ class systemController extends Controller
         return View('pages.home', ['drivers' => Driver::All() ]);
     }
 
-
+#===============================================================================
 
    /**
     *  Home page action
@@ -86,7 +98,7 @@ class systemController extends Controller
       //code to view the admin page and pull records from database(To change and make template for this).
       return View('pages.admin.admin', ['drivers' => Driver::All() ]);
     }
-
+#===============================================================================
 
 
    /**
@@ -96,7 +108,7 @@ class systemController extends Controller
       // code to view the map
       return View('pages.map');
     }
-
+#===============================================================================
 
 
     /**
@@ -108,7 +120,7 @@ class systemController extends Controller
     {
         //
     }
-
+#===============================================================================
 
 
     /**
@@ -173,12 +185,12 @@ class systemController extends Controller
 
 
     }
-
+#===============================================================================
 
     public function profile(){
       return View('pages.profile');
     }
-
+#===============================================================================
     /**
      * Display the specified resource.
      *
@@ -196,7 +208,7 @@ class systemController extends Controller
       //Show profile page
       return View('pages.profile')->withDriver($driver);
     }
-
+#===============================================================================
 
 
     /**
@@ -218,7 +230,7 @@ class systemController extends Controller
         return View('pages.admin.edit')->withDriver($driver);
     }
 
-
+#===============================================================================
 
 
     /**
@@ -269,7 +281,7 @@ class systemController extends Controller
         return redirect()->route('/admin');
     }
 
-
+#===============================================================================
 
 
     /**
@@ -289,13 +301,13 @@ class systemController extends Controller
       //redirect
       return redirect()->route('/admin');
     }
-
+#===============================================================================
 
 
     public function sensor(){
       return View('sensor', ['drivers' => Driver::All() ]);
     }
-
+#===============================================================================
     public function detect(Request $request, $id){
       //get the friver id
       $driver = Driver::find($id);
@@ -312,6 +324,8 @@ class systemController extends Controller
 
 
     }
+#===============================================================================
+
 
     /**
     *This is the sensor input

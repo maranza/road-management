@@ -118,7 +118,7 @@ class vehicle extends Controller
       $sensor = Input::get('alcohol_status');
       $speedometer = Input::get('speed_status');
 
-        if($alcohol_level >= preg_replace( "/\r|\n/", "", $sensor) && $speed_level >= preg_replace( "/\r|\n/", "", $speedometer) ){
+        if(($alcohol_level >= preg_replace( "/\r|\n/", "", $sensor)) && ($speed_level >= preg_replace( "/\r|\n/", "", $speedometer)) ){
 
           //pull vehicles.
           $driver = Driver::all();

@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-2">
             <h2 class="page-header">
-              <i class="fa fa-cab"></i>  Real-Time Car Monitoring
+              <i class="fa fa-cab"></i>  Real-Time Vehicle Monitoring
             </h2>
             <ol class="breadcrumb">
               <li>
@@ -22,9 +22,9 @@
         <!-- /.row -->
         <div class="row">
           <div class="col-md-10 col-md-offset-2" style="height:92vh;">
-            <u><h3 class="page-header text-center">Monitored car information</h3></u>
+            <u><h3 class="page-header text-center">Monitored vehicle information</h3></u>
             <div class="table-responsive">
-              <table class="table table-condensed table-bordered table-hover table-striped ">
+              <table class="table table-condensed table-bordered table-striped ">
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -60,8 +60,20 @@
                     <td>{{$driver -> model}}</td>
                     <td>{{$driver -> color}}</td>
                     <td>{{$driver -> license}}</td>
+                    @if(($driver -> alcohol_status) >=10)
+                    <td class="danger">{{$driver -> alcohol_status}} %</td>
+                    @else
                     <td>{{$driver -> alcohol_status}} %</td>
+                    @endif
+
+
+                    @if(($driver->speed_status) >= 120)
                     <td class="danger">{{$driver -> speed_status}}</td>
+                    @else
+                    <td>{{$driver -> speed_status}}</td>
+                    @endif
+
+
                     <td>{{$driver -> speed}} km/h</td>
                   </tr>
                   @endforeach

@@ -5,6 +5,8 @@ use Collective\Html\HtmlServiceProvider;
 
 @extends('master')
 
+@if(session()->has('state'))
+
 @section('content')
 <div class="container-fluid" style="background-color:white; margin:auto; width:100%; min-height:92vh;">
 
@@ -39,6 +41,104 @@ use Collective\Html\HtmlServiceProvider;
       <div class="tab-content">
         <div class="tab-pane active" id="tab1">
           <u><h3 class="text-center">Drivers information</h3></u><br>
+          @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">
+              <strong>Success:</strong> {{ Session::get('success') }}
+            </div>
+          @endif
+          @if(Session::has('added'))
+            <div class="alert alert-success" role="alert">
+              <strong>Success:</strong> {{ Session::get('added') }}
+            </div>
+          @endif
+          <!-- <h4>Use modals to Add, update Info</h4> -->
+          <div class="table-responsive">
+            <table class="table table-condensed table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Owner</th>
+                  <th>Gender</th>
+                  <th>Age</th>
+                  <!-- <th>Cell-no</th> -->
+                  <!-- <th>E-mail</th> -->
+                  <th>Address</th>
+                  <th>Car-Name</th>
+                  <th>Car-Model</th>
+                  <th>Car-Color</th>
+                  <th>Car-License</th>
+                  <th>Alcohol-Level</th>
+                  <th>Speed-Level</th>
+                  <th>Speed</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                @foreach($drivers as $driver)
+                <tr class="success">
+                  <td>{{$driver -> id}}</td>
+                  <td>{{$driver -> surname}}</td>
+                  <td>{{$driver -> gender}}</td>
+                  <td>{{$driver -> age}}</td>
+                  <!-- <td>{{$driver -> cell}}</td> -->
+                  <!-- <td>{{$driver -> email}}</td> -->
+                  <td>{{$driver -> address}}</td>
+                  <td>{{$driver -> car}}</td>
+                  <td>{{$driver -> model}}</td>
+                  <td>{{$driver -> color}}</td>
+                  <td>{{$driver -> license}}</td>
+
+                  @if(($driver -> alcohol_status) >=10)
+                  <td class="danger">{{$driver -> alcohol_status}} %</td>
+                  @else
+                  <td>{{$driver -> alcohol_status}} %</td>
+                  @endif
+
+                  @if(($driver->speed_status) >= 120)
+                  <td class="danger">{{$driver -> speed_status}}</td>
+                  @else
+                  <td>{{$driver -> speed_status}}</td>
+                  @endif
+                  <td>{{$driver -> speed}} km/h</td>
+                  <td>{!! Html::linkRoute('drivers.edit', 'edit', array($driver->id), array('class' => 'btn btn-warning')) !!}</td>
+                  <td>{!! Html::linkRoute('drivers.show', 'view', array($driver->id), array('class' => 'btn btn-primary')) !!}</td>
+                  <td>
+                    {!! Form::open(['route' => ['drivers.destroy', $driver->id], 'method' => 'DELETE']) !!}
+                      {!! Form::submit('Del', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+                  </td>
+                </tr>
+                @endforeach
+
+                <!-- <tr class="success">
+                  <td>1</td>
+                  <td>Oratile</td>
+                  <td>Khutsoane</td>
+                  <td>Male</td>
+                  <td>26</td>
+                  <td>0749773057</td>
+                  <td>o.maranza</td>
+                  <td>Mafikeng</td>
+                  <td>Jeep</td>
+                  <td>SRT</td>
+                  <td>Black</td>
+                  <td>MVP-619-GP</td>
+                  <td>Normal</td>
+                  <td class="danger">Alert</td>
+                  <td>60 km/h</td>
+                </tr> -->
+
+              </tbody>
+            </table>
+          </div>
+        </div> <!-- End first Tab-->
+
+        <!-- Second Tab -->
+        <div class="tab-pane" id="tab2">
+          <!-- <h3>Add forms to add users</h3> -->
+          <!-- <h4>Use modals to Add, update Info</h4> -->
+          <br>
+          <button class="btn btn-primary" type="button" name="button" data-target="#myModal" data-toggle="modal">Add user</button><br><hr>
           @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
               <strong>Success:</strong> {{ Session::get('success') }}
@@ -119,13 +219,7 @@ use Collective\Html\HtmlServiceProvider;
               </tbody>
             </table>
           </div>
-        </div> <!-- End first Tab-->
 
-        <!-- Second Tab -->
-        <div class="tab-pane" id="tab2">
-          <h3>Add forms to add users</h3>
-          <h4>Use modals to Add, update Info</h4>
-          <button class="btn btn-primary" type="button" name="button" data-target="#myModal" data-toggle="modal">Add user</button><br>
           <!-- Modals -->
           <div class="modal fade" id="myModal" tabindex="-1" data-backdrop="static">
             <div class="modal-dialog">
@@ -210,3 +304,13 @@ use Collective\Html\HtmlServiceProvider;
   </div>
 </div>
 @endsection
+
+
+
+@else
+
+<?php
+  return redirect()->route('init');
+ ?>
+
+@endif

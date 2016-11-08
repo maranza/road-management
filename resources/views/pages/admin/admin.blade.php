@@ -51,6 +51,8 @@ use Collective\Html\HtmlServiceProvider;
               <strong>Success:</strong> {{ Session::get('added') }}
             </div>
           @endif
+          <br>
+          <button class="btn btn-primary" type="button" name="button" data-target="#myModal2" data-toggle="modal">Add Driver</button><br><hr>
           <!-- <h4>Use modals to Add, update Info</h4> -->
           <div class="table-responsive">
             <table class="table table-condensed table-bordered table-striped">
@@ -131,6 +133,74 @@ use Collective\Html\HtmlServiceProvider;
               </tbody>
             </table>
           </div>
+
+
+          <!-- Modals -->
+          <div class="modal fade" id="myModal2" tabindex="-1" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button class="close" type="close" name="button" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title">Add Driver</h3>
+                </div>
+                <div class="modal-body"> <!-- Add User Modal -->
+                  <!-- laravel form -->
+                  {!! Form::open(['route' => 'drivers.store', 'method' => 'post']) !!}
+
+                    {{ Form::label('name', 'name:') }}
+                    {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('surname', 'surname:') }}
+                    {{ Form::text('surname', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('gender', 'gender:') }}
+                    {{ Form::text('gender', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('age', 'age:') }}
+                    {{ Form::text('age', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('cell', 'cell:') }}
+                    {{ Form::text('cell', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('email', 'email:') }}
+                    {{ Form::email('email', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('address', 'address:') }}
+                    {{ Form::text('address', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('car', 'car-name:') }}
+                    {{ Form::text('car', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('model', 'car-model:') }}
+                    {{ Form::text('model', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('color', 'car-color:') }}
+                    {{ Form::text('color', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::label('license', 'car-license:') }}
+                    {{ Form::text('license', Input::old('name'), array('class' => 'form-control')) }}
+
+                    {{ Form::submit('add driver', array('class' => 'btn btn-primary', 'style' => 'margin: 10px;'))}}
+                    {{ Form::reset('clear', array('class' => 'btn btn-primary'))}}
+                  {!! Form::close() !!}
+                  <!-- hard coded form -->
+                  <!-- <form class="">
+                    <label for="">Email</label>
+                    <input class="span form-control" type="text" name="name" placeholder="email"><br><br>
+                    <label for="">Password</label>
+                    <input class="span4 form-control" type="password" name="name" placeholder="password"><br><br>
+                    <button class="btn btn-primary" type="button" name="button">add</button>
+                    <button class="btn btn-primary" type="reset" name="button">clear</button>
+                  </form> -->
+                </div> <!-- end add user modal -->
+                <div class="modal-footer">
+                  <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" type="button" name="button">close</button>
+                </div>
+              </div>
+            </div>
+          </div> <!--end modal-->
+
+
         </div> <!-- End first Tab-->
 
         <!-- Second Tab -->
